@@ -1,39 +1,35 @@
 import userModel from '../model/user';
+import * as validator from '../validators/auth';
+import { createUser, findUser } from '../services/auth'
 
-export const signUp = async (ctx) =>  {
+export const signUp = async (ctx , next) =>  {
 
-  const user = new userModel({
-    username: ctx.request.body.username,
-    password: ctx.request.body.password
-  });
 
-  try {
-    !(ctx.request.body.username && ctx.request.body.password) && ctx.throw(404,'username and pass is required');;
-    const promise = await user.save();
-    ctx.body = promise;
-  } catch (err) {
-    ctx.status = err.status || 500;
-    ctx.body = err.message;
-    ctx.app.emit('error', err, ctx);
+  
+
+  
+  // const error = validator.signUpValidator(userReq);
+  // console.log("error::::", error);
+  // if(error)
+  //   return ctx.throw(404, error);
+   
+  // const user = new userModel(userReq);
+  // const promise = await user.save();
+  // ctx.body = promise;
+  const payload = {
+    username: ctx.body.username,
+    pass
   }
+    const promise = await createUser(ctx.request.body);
+    ctx.body = promise;
 
 };
 
 
 export const signIn = async (ctx) =>  {
-  const req = {
-    username : ctx.request.body.username,
-    password : ctx.request.body.password,
-  }
-
-
-  try {
-    const promise = await userModel.findOne(req);
-    promise ? ctx.body = promise : ctx.throw(404,'no record found');
-  } catch (err) {
-    ctx.status = err.status || 500;
-    ctx.body = err.message;
-    ctx.app.emit('error', err, ctx);
-  }
+  
+  const promise = await findUser(ctx.request.body);
+  ctx.body = promise;
+ 
 
 };
