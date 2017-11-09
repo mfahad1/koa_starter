@@ -1,0 +1,23 @@
+{
+  "name": "koa-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "koa": "^2.0.0-alpha.8",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compose": "^4.0.0",
+    "koa-mongo": "^0.8.0",
+    "koa-mongoose": "^2.0.0",
+    "koa-router": "^7.1.1",
+    "mongoose": "^4.13.0",
+    "revalidator": "^0.3.1"
+  }
+}
