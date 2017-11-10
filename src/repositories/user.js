@@ -6,5 +6,5 @@ export const CreateUser = (payload) => {
 }
 
 export const FindUser = (payload) => {
-  return new userModel.findOne(payload);
+  return userModel.findOne(payload);
 }

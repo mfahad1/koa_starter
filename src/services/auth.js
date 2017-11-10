@@ -3,10 +3,6 @@ import * as validator from '../validators/auth'
 
 export const createUser = (payload) => {
 
-  const req = {
-    username : payload.username,
-    password : payload.password,
-  }
 
   const error = validator.authValidator(req);
   
@@ -18,11 +14,6 @@ export const createUser = (payload) => {
 }
 
 export const findUser = (payload) => {
-
-  const req = {
-    username : payload.username,
-    password : payload.password,
-  }
 
   const error = validator.authValidator(req);
   
